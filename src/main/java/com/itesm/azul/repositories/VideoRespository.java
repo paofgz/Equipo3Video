@@ -8,8 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+//@Repository
 @EnableScan
 public interface VideoRespository extends CrudRepository<Video,String> {
     List<Video> findAll();
+    /*CrudRepository<Video, String> {
+
+    }*/
 }
