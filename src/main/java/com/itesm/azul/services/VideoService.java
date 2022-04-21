@@ -1,6 +1,7 @@
 package com.itesm.azul.services;
 
 
+import com.itesm.azul.dto.VideoDTO;
 import com.itesm.azul.models.Video;
 import com.itesm.azul.repositories.VideoRespository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,8 @@ public class VideoService {
     @Autowired
     VideoRespository videoRespository;
 
-    public List<Video> findAll(){
+    //READ GET ALL
+    public Iterable<Video> lista(){
         return videoRespository.findAll();
     }
 }
