@@ -14,7 +14,11 @@ public class VideoService {
     @Autowired
     VideoRespository videoRespository;
 
-    public List<Video> findAll(){
-        return videoRespository.findAll();
+    // READ
+    public Video getOne(String video_name) {
+        return videoRespository.findById(video_name).get();
+    }
+    public boolean existsName(String video_name){
+        return videoRespository.existsById(video_name);
     }
 }
