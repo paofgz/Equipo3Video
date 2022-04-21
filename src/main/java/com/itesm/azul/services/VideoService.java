@@ -14,7 +14,8 @@ public class VideoService {
     @Autowired
     VideoRespository videoRespository;
 
-    public List<Video> findAll(){
-        return videoRespository.findAll();
+    //DELETE
+    public void delete(String video_name) {videoRespository.deleteById(video_name);}
+
+
     }
-}
