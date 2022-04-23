@@ -10,7 +10,6 @@ import java.util.List;
 
 @EnableScan
 public interface VideoRespository extends
-    CrudRepository<Video, String>{
+        CrudRepository<Video, String>{
 
-    }
 }
