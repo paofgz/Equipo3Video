@@ -10,7 +10,7 @@ import java.util.Set;
 @DynamoDBTable(tableName = "Video")
 public class Video {
 
-    private Integer semester;
+    private String semester;
     private String video_name;
     private String agent_name;
     private String agent_lastname;
@@ -25,7 +25,7 @@ public class Video {
 
 
     @DynamoDBHashKey
-    public Integer getSemester() {return semester;}
+    public String getSemester() {return semester;}
 
     @DynamoDBAttribute
     public String getVideo_name() {
@@ -118,7 +118,7 @@ public class Video {
         this.tags = tags;
     }
 
-    public void setSemester(Integer semester) { this.semester = semester; }
+    public void setSemester(String semester) { this.semester = semester; }
 
     public void setVideo_name(String video_name) { this.video_name = video_name; }
 }

@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class VideoDTO {
     private String video_name;
-    private Integer semester;
+    private String semester;
     private String agent_name;
     private String agent_lastname;
     private String user_name;
@@ -104,11 +104,11 @@ public class VideoDTO {
         this.location_path = location_path;
     }
 
-    public Integer getSemester() {
+    public String getSemester() {
         return semester;
     }
 
-    public void setSemester(Integer semester) {
+    public void setSemester(String semester) {
         this.semester = semester;
     }
 }
