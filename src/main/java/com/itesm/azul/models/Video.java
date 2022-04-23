@@ -10,9 +10,8 @@ import java.util.Set;
 @DynamoDBTable(tableName = "Video")
 public class Video {
 
-    private String client_id;
+    private String semester;
     private String video_name;
-    private Integer number;
     private String agent_name;
     private String agent_lastname;
     private String user_name;
@@ -24,27 +23,13 @@ public class Video {
     private Set<String> tags;
     private String location_path;
 
-    @DynamoDBHashKey
-    public String getClient_id() {
-        return client_id;
-    }
 
-    public void setClient_id(String client_id) {
-        this.client_id = client_id;
-    }
+    @DynamoDBHashKey
+    public String getSemester() {return semester;}
 
     @DynamoDBAttribute
     public String getVideo_name() {
         return video_name;
-    }
-
-    public void setVideo_name(String video_name) {
-        this.video_name = video_name;
-    }
-
-    @DynamoDBAttribute
-    public Integer getNumber() {
-        return number;
     }
 
     @DynamoDBAttribute
@@ -88,18 +73,10 @@ public class Video {
     }
 
     @DynamoDBAttribute
-    public Set<Integer> getPermissions() {
-        return permissions;
-    }
+    public Set<Integer> getPermissions() { return permissions; }
 
     @DynamoDBAttribute
-    public Set<String> getTags() {
-        return tags;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
+    public Set<String> getTags() { return tags; }
 
     public void setAgent_name(String agent_name) {
         this.agent_name = agent_name;
@@ -140,4 +117,8 @@ public class Video {
     public void setTags(Set<String> tags) {
         this.tags = tags;
     }
+
+    public void setSemester(String semester) { this.semester = semester; }
+
+    public void setVideo_name(String video_name) { this.video_name = video_name; }
 }

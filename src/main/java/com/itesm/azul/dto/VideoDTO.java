@@ -3,9 +3,8 @@ package com.itesm.azul.dto;
 import java.util.Set;
 
 public class VideoDTO {
-    private String client_id;
     private String video_name;
-    private Integer number;
+    private String semester;
     private String agent_name;
     private String agent_lastname;
     private String user_name;
@@ -17,23 +16,12 @@ public class VideoDTO {
     private Set<String> tags;
     private String location_path;
 
-    public String getClient_id() { return client_id; }
-    public void setClient_id(String client_id) { this.client_id = client_id;}
-
     public String getVideo_name() {
         return video_name;
     }
 
     public void setVideo_name(String video_name) {
         this.video_name = video_name;
-    }
-
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
     }
 
     public String getAgent_name() {
@@ -114,5 +102,13 @@ public class VideoDTO {
 
     public void setLocation_path(String location_path) {
         this.location_path = location_path;
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
     }
 }
