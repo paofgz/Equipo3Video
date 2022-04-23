@@ -15,13 +15,17 @@ public class VideoService {
     @Autowired
     VideoRespository videoRespository;
 
-
     // READ
     public Video getOne(String video_name) {
         return videoRespository.findById(video_name).get();
     }
     public boolean existsName(String video_name) {
         return videoRespository.existsById(video_name);
+    }
+
+    //READ GET ALL
+    public Iterable<Video> lista(){
+        return videoRespository.findAll();
     }
 
 }

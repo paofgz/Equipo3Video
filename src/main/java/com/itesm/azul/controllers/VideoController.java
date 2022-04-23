@@ -21,7 +21,6 @@ public class VideoController {
     @Autowired
     VideoService videoService;
 
-
     // Get one video by name
     @GetMapping("/{video_name}")
     public ResponseEntity<Video> getOne(@PathVariable("video_name") String video_name) {
@@ -30,4 +29,11 @@ public class VideoController {
         }
         return ResponseEntity.ok(videoService.getOne(video_name));
     }
+
+    //READ GET ALL
+    @GetMapping("/all")
+    public ResponseEntity<Iterable<Video>> getAll() {
+        return ResponseEntity.ok(videoService.lista());
+    }
+
 }

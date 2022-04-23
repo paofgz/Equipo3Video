@@ -16,7 +16,6 @@ public class VideoDTO {
     private Set<String> tags;
     private String location_path;
 
-
     public String getVideo_name() {
         return video_name;
     }
