@@ -2,6 +2,7 @@ package com.itesm.azul.controllers;
 
 import com.itesm.azul.dto.VideoDTO;
 import com.itesm.azul.models.Video;
+import com.itesm.azul.models.VideoId;
 import com.itesm.azul.services.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,12 +23,12 @@ public class VideoController {
     VideoService videoService;
 
     // Get one video by name
-    @GetMapping("/{video_name}")
-    public ResponseEntity<Video> getOne(@PathVariable("video_name") String video_name) {
-        if (!videoService.existsName(video_name)) {
+    @GetMapping("/{semester}/{video_name}")
+    public ResponseEntity<Video> getOne(@PathVariable("semester") String semester, @PathVariable("video_name") String video_name) {
+        if (!videoService.existsName(new VideoId(semester, video_name))) {
             return new ResponseEntity("No existe el video", HttpStatus.NOT_FOUND);
         }
-        return ResponseEntity.ok(videoService.getOne(video_name));
+        return ResponseEntity.ok(videoService.getOne(new VideoId(semester, video_name)));
     }
 
     //READ GET ALL
