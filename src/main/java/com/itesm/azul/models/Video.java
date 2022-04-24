@@ -2,16 +2,18 @@ package com.itesm.azul.models;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import org.springframework.data.annotation.Id;
 
 import java.util.List;
 import java.util.Set;
 
 @DynamoDBTable(tableName = "Video")
 public class Video {
+    @Id
+    private VideoId videoId;
 
-    private String semester;
-    private String video_name;
     private String agent_name;
     private String agent_lastname;
     private String user_name;
@@ -24,12 +26,35 @@ public class Video {
     private String location_path;
 
 
-    @DynamoDBHashKey
-    public String getSemester() {return semester;}
 
-    @DynamoDBAttribute
+    public Video() {}
+
+    public Video(VideoId videoId) {
+        this.videoId = videoId;
+    }
+
+    @DynamoDBHashKey(attributeName = "semester")
+    public String getSemester() {
+        return videoId != null ? videoId.getSemester() : null;
+    }
+
+    public void setSemester(String semester) {
+        if (videoId == null) {
+            videoId = new VideoId();
+        }
+        videoId.setSemester(semester);
+    }
+
+    @DynamoDBRangeKey(attributeName = "video_name")
     public String getVideo_name() {
-        return video_name;
+        return videoId != null ? videoId.getVideo_name() : null;
+    }
+
+    public void setVideo_name(String video_name) {
+        if (videoId == null) {
+            videoId = new VideoId();
+        }
+        videoId.setVideo_name(video_name);
     }
 
     @DynamoDBAttribute
@@ -117,8 +142,4 @@ public class Video {
     public void setTags(Set<String> tags) {
         this.tags = tags;
     }
-
-    public void setSemester(String semester) { this.semester = semester; }
-
-    public void setVideo_name(String video_name) { this.video_name = video_name; }
 }
