@@ -21,6 +21,13 @@ public class VideoController {
     @Autowired
     VideoService videoService;
 
+    // CREATE VIDEO
+    @PostMapping("/save")
+    public VideoDTO save(@RequestBody VideoDTO video) throws Exception{
+        videoService.createVideo(video);
+        return video;
+    }
+
     // Get one video by name
     @GetMapping("/{video_name}")
     public ResponseEntity<Video> getOne(@PathVariable("video_name") String video_name) {
