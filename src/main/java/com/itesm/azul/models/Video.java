@@ -1,12 +1,10 @@
 package com.itesm.azul.models;
 
-
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import org.springframework.data.annotation.Id;
-
 
 import java.util.List;
 import java.util.Set;
@@ -29,8 +27,23 @@ public class Video {
 
 
 
+    public Video() {}
+
+    public Video(VideoId videoId) {
+        this.videoId = videoId;
+    }
+
     @DynamoDBHashKey(attributeName = "semester")
-    public String getSemester() {return "semester";}
+    public String getSemester() {
+        return videoId != null ? videoId.getSemester() : null;
+    }
+
+    public void setSemester(String semester) {
+        if (videoId == null) {
+            videoId = new VideoId();
+        }
+        videoId.setSemester(semester);
+    }
 
     @DynamoDBRangeKey(attributeName = "video_name")
     public String getVideo_name() {
@@ -42,13 +55,6 @@ public class Video {
             videoId = new VideoId();
         }
         videoId.setVideo_name(video_name);
-    }
-
-    public void setSemester(String semester) {
-        if (videoId == null) {
-            videoId = new VideoId();
-        }
-        videoId.setSemester(semester);
     }
 
     @DynamoDBAttribute
