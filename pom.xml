@@ -30,12 +30,12 @@
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-dynamodb</artifactId>
-			<version>1.12.177</version>
+			<version>1.11.749</version>
 		</dependency>
 		<dependency>
-			<groupId>com.github.derjust</groupId>
+			<groupId>io.github.boostchicken</groupId>
 			<artifactId>spring-data-dynamodb</artifactId>
-			<version>5.1.0</version>
+			<version>5.2.1</version>
 		</dependency>
 	</dependencies>
 
@@ -44,6 +44,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${project.parent.version}</version>
 			</plugin>
 		</plugins>
 	</build>
