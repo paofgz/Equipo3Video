@@ -44,4 +44,25 @@ public class VideoController {
         return ResponseEntity.ok(videoService.lista());
     }
 
+    //Update a tuple
+    @PutMapping("/update")
+    public ResponseEntity<Video> update(@RequestBody VideoDTO videoDTO){
+        if(!videoService.existsName(new VideoId(videoDTO.getSemester(), videoDTO.getVideo_name())))
+        {
+            return new ResponseEntity("no existe, no se puede actualizar", HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(videoService.update(videoDTO));
+    }
+
+    //Delete a tuple
+    @DeleteMapping("delete/{semester}/{video_name}")
+    public ResponseEntity<Video> delete(@PathVariable("semester") String semester, @PathVariable("video_name") String video_name){
+        VideoId videoId = new VideoId(semester, video_name);
+        if(!videoService.existsName(videoId)){
+            return new ResponseEntity("no existe, no se puede eliminar", HttpStatus.NOT_FOUND);
+        }
+        videoService.delete(videoId);
+        return new ResponseEntity("video eliminado", HttpStatus.OK);
+    }
+
 }

@@ -38,12 +38,14 @@ public class Video {
         return videoId != null ? videoId.getSemester() : null;
     }
 
+
     public void setSemester(String semester) {
         if (videoId == null) {
             videoId = new VideoId();
         }
         videoId.setSemester(semester);
     }
+
 
     @DynamoDBRangeKey(attributeName = "video_name")
     public String getVideo_name() {

@@ -36,6 +36,7 @@ public class VideoService {
 
     // READ
     public Video getOne(VideoId videoId) {
+
         return videoRespository.findById(videoId).get();
     }
     public boolean existsName(VideoId videoId) {
@@ -47,6 +48,28 @@ public class VideoService {
     //READ GET ALL
     public Iterable<Video> lista(){
         return videoRespository.findAll();
+    }
+
+    //Update
+    public Video update(VideoDTO dto){
+        VideoId vid = new VideoId(dto.getSemester(), dto.getVideo_name());
+        Video v = videoRespository.findById(vid).get();
+        v.setAgent_name(dto.getAgent_name());
+        v.setAgent_lastname(dto.getAgent_lastname());
+        v.setUser_name(dto.getUser_name());
+        v.setCreated_at(dto.getCreated_at());
+        v.setUpdated_at(dto.getUpdated_at());
+        v.setCall_reason(dto.getCall_reason());
+        v.setDuration(dto.getDuration());
+        v.setPermissions(dto.getPermissions());
+        v.setTags(dto.getTags());
+        v.setLocation_path(dto.getLocation_path());
+        return videoRespository.save(v);
+    }
+
+    //Delete
+    public void delete(VideoId videoId){
+        videoRespository.deleteById(videoId);
     }
 
 }
