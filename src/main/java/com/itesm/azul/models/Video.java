@@ -30,7 +30,9 @@ public class Video {
 
 
     @DynamoDBHashKey(attributeName = "semester")
-    public String getSemester() {return "semester";}
+    public String getSemester() {
+        return videoId != null ? videoId.getSemester() : null;
+    }
 
     @DynamoDBRangeKey(attributeName = "video_name")
     public String getVideo_name() {
