@@ -38,6 +38,8 @@ public class VideoController {
         return ResponseEntity.ok(videoService.getOne(new VideoId(semester, video_name)));
     }
 
+
+
     //READ GET ALL
     @GetMapping("/all")
     public ResponseEntity<Iterable<Video>> getAll() {
@@ -64,5 +66,7 @@ public class VideoController {
         videoService.delete(videoId);
         return new ResponseEntity("video eliminado", HttpStatus.OK);
     }
+
+
 
 }

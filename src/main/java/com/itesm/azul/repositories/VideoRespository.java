@@ -12,6 +12,5 @@ import java.util.List;
 @EnableScan
 public interface VideoRespository extends
         CrudRepository<Video, VideoId>{
-
 }
 
